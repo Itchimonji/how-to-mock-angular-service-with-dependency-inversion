@@ -1,2 +1,3 @@
-# how-to-mock-angular-service-with-dependency-inversion
-Simple project to show how to mock an angular service with dependency inversion
+# How to Mock an Angular-Service with Dependency Inversion
+
+This project was generated using [Nx](https://nx.dev).
