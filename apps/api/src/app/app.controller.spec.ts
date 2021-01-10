@@ -3,8 +3,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { mockAnimals } from './mocks/animal.mock';
-import { Animal } from './models/animal.interface';
+
 import { AnimalFactory } from './factories/animal.factory';
+import { Animal } from '../../../../libs/api-interfaces/src/lib/animal.interface';
 
 describe('AppController', () => {
   let app: TestingModule;

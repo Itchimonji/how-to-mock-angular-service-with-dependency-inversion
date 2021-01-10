@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import {AnimalCollection} from "./models/animal.collection";
-import {Animal} from "./models/animal.interface";
+
 import { mockAnimals } from './mocks/animal.mock';
+import { Animal } from '../../../../libs/api-interfaces/src/lib/animal.interface';
 
 @Injectable()
 export class AppService {

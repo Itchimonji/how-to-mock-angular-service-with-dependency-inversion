@@ -1,20 +1,30 @@
 import { Controller, Get, Post } from '@nestjs/common';
 
 import { AppService } from './app.service';
-import { Animal } from './models/animal.interface';
+import { Animal } from '@how-to-mock-angular-service-with-dependency-inversion/api-interfaces';
+
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  private parseJsonAnimalList(list: Animal[]): Animal[] {
+    return JSON.parse(JSON.stringify(list).split('"_id":').join('"id":').split('"_name":').join('"name":'));
+  }
+
+private parseJsonAnimal(value: Animal): Animal {
+    return JSON.parse(JSON.stringify(value).split('"_id":').join('"id":').split('"_name":').join('"name":'));
+  }
+
+
   @Get('animals')
   getAnimals(): Animal[] {
-    return this.appService.getAnimals();
+    return this.parseJsonAnimalList([...this.appService.getAnimals()]);
   }
 
   @Get('animalById')
   getAnimalById(id: number): Animal {
-    return this.appService.getAnimalById(id);
+    return this.parseJsonAnimal(this.appService.getAnimalById(id));
   }
 
   @Post('add')

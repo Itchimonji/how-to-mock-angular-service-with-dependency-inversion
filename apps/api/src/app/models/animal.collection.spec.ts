@@ -1,7 +1,7 @@
 
 import { AnimalCollection } from './animal.collection';
 import { AnimalFactory } from '../factories/animal.factory';
-import { Animal } from './animal.interface';
+import { Animal } from '../../../../../libs/api-interfaces/src/lib/animal.interface';
 
 describe('AnimalCollection', () => {
   let collection: AnimalCollection;

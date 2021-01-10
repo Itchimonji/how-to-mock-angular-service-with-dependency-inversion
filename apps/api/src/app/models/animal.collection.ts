@@ -1,4 +1,4 @@
-import { Animal } from './animal.interface';
+import { Animal } from '../../../../../libs/api-interfaces/src/lib/animal.interface';
 import { AnimalFactory } from '../factories/animal.factory';
 import { NullAnimalImpl } from './animal.model';
 

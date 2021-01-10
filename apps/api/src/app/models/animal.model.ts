@@ -1,4 +1,4 @@
-import { Animal } from './animal.interface';
+import { Animal } from '../../../../../libs/api-interfaces/src/lib/animal.interface';
 
 export class AnimalImpl implements Animal {
   private readonly _id: number;
