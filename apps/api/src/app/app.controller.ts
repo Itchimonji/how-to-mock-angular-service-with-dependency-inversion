@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
 import { AppService } from './app.service';
 import { Animal } from '@how-to-mock-angular-service-with-dependency-inversion/api-interfaces';
@@ -8,28 +8,25 @@ import { Animal } from '@how-to-mock-angular-service-with-dependency-inversion/a
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  private parseJsonAnimalList(list: Animal[]): Animal[] {
-    return JSON.parse(JSON.stringify(list).split('"_id":').join('"id":').split('"_name":').join('"name":'));
-  }
-
-private parseJsonAnimal(value: Animal): Animal {
-    return JSON.parse(JSON.stringify(value).split('"_id":').join('"id":').split('"_name":').join('"name":'));
-  }
-
-
   @Get('animals')
   getAnimals(): Animal[] {
-    return this.parseJsonAnimalList([...this.appService.getAnimals()]);
+    return [...this.appService.getAnimals()];
   }
 
-  @Get('animalById')
-  getAnimalById(id: number): Animal {
-    return this.parseJsonAnimal(this.appService.getAnimalById(id));
+  @Get('animalById/:id')
+  getAnimalById(@Param('id') id: number): Animal {
+    return this.appService.getAnimalById(id);
   }
 
   @Post('add')
   addAnimal(animal: Animal): number {
     return this.appService.addAnimal(animal);
+  }
+
+  @Post('addByName')
+  async addAnimalByName(@Body('name') name: string): Promise<number> {
+    console.log(name);
+    return this.appService.addAnimalByIdAndName(this.appService.getAnimals().length, name);
   }
 
   @Post('addByIdAndName')

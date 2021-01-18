@@ -1,7 +1,7 @@
 
 import { AnimalCollection } from './animal.collection';
 import { AnimalFactory } from '../factories/animal.factory';
-import { Animal } from '../../../../../libs/api-interfaces/src/lib/animal.interface';
+import { Animal } from '@how-to-mock-angular-service-with-dependency-inversion/api-interfaces';
 
 describe('AnimalCollection', () => {
   let collection: AnimalCollection;
@@ -25,7 +25,7 @@ describe('AnimalCollection', () => {
     expect(dogFromCollection.id).toEqual(dogId);
     expect(dogFromCollection.name).toEqual(dogName);
 
-    expect(collection.get()).toEqual([cat, {_id: dogId, _name: dogName}]);
+    expect(collection.get()).toEqual([cat, { id: dogId, name: dogName}]);
   });
 
   it('should have some mock data', () => {

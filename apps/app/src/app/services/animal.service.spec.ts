@@ -1,12 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AnimalService } from './animal.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AnimalService', () => {
   let service: AnimalService;
 
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ]
+    }).compileComponents();
+  });
+
   beforeEach(() => {
-    TestBed.configureTestingModule({});
     service = TestBed.inject(AnimalService);
   });
 

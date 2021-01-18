@@ -1,19 +1,41 @@
-import { Component } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { AnimalViewComponent } from './components/animal-view/animal-view.component';
+import { AnimalAddComponent } from './components/animal-add/animal-add.component';
+import { FormsModule } from '@angular/forms';
+import { AbstractAnimalService } from './services/animal.abstract-service';
+import { AnimalService } from './services/animal.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AnimalSearchComponent } from './components/animal-search/animal-search.component';
+import { combineAll } from 'rxjs/operators';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
-      imports: [HttpClientModule],
+      declarations: [AppComponent, AnimalViewComponent, AnimalAddComponent, AnimalSearchComponent],
+      imports: [HttpClientTestingModule, FormsModule],
+      providers: [
+        {
+          provide: AbstractAnimalService,
+          useClass: AnimalService
+        }]
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
+  });
+
+  it('should have a title', () => {
+    expect(component.title).toEqual('Test Zoo');
   });
 });

@@ -1,0 +1,3 @@
+<input type="text" placeholder="Animal id" [(ngModel)]="id">
+<button (click)="btnSearchAnimal()">Add animal</button>
+<div *ngIf="searchedAnimal | async as animal">{{animal.name}}</div>

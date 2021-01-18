@@ -37,7 +37,7 @@ describe('AppController', () => {
 
   it('should add a second Alligator', () => {
     const appController = app.get<AppController>(AppController);
-    const id: number = appController.addAnimal(AnimalFactory.createAnimal(appController.getAnimals().length, 'Alligator2')) - 1;
+    const id: number = appController.addAnimal(AnimalFactory.createAnimal(appController.getAnimals().length, 'Alligator2'));
     expect(appController.getAnimalById(id).name).toEqual('Alligator2');
   });
 

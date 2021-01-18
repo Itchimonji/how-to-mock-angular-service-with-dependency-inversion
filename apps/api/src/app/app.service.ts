@@ -22,11 +22,11 @@ export class AppService {
   }
 
   public addAnimal(animal: Animal): number {
-    return this.animalCollection.add(animal);
+    return this.animalCollection.add(animal) - 1;
   }
 
   public addAnimalByIdAndName(id: number, name: string): number {
-    return this.animalCollection.addByIdAndName(id, name);
+    return this.animalCollection.addByIdAndName(id, name) - 1;
   }
 
 

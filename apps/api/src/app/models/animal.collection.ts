@@ -22,11 +22,12 @@ export class AnimalCollection {
   }
 
   public getById(id: number): Animal {
-    const result: Animal = this._collection.find(x => x.id === id);
+    const result: Animal = this._collection.find(x => x.id == id);
     return result || new NullAnimalImpl();
   }
 
   public fillWithMocks(data: string[]): Animal[] {
+    this._collection.length = 0;
     data.forEach((animalName: string) => {
       this._collection.push(AnimalFactory.createAnimal(this._collection.length, animalName));
     });

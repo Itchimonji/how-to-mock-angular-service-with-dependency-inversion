@@ -1,29 +1,16 @@
-import { Animal } from '../../../../../libs/api-interfaces/src/lib/animal.interface';
+import { Animal } from '@how-to-mock-angular-service-with-dependency-inversion/api-interfaces';
 
 export class AnimalImpl implements Animal {
-  private readonly _id: number;
-  private readonly _name: string;
-
-  public get id(): number {
-    return this._id;
-  }
-
-  public get name(): string {
-    return this._name;
-  }
+  public readonly id: number;
+  public readonly name: string;
 
   constructor(id: number, name: string) {
-    this._id = id;
-    this._name = name;
+    this.id = id;
+    this.name = name;
   }
 }
 
 export class NullAnimalImpl implements Animal {
-  public get id(): number {
-    return -1;
-  }
-
-  public get name(): string {
-    return 'Unknown animal';
-  }
+  public readonly id = -1;
+  public readonly name = 'Unknown animal';
 }

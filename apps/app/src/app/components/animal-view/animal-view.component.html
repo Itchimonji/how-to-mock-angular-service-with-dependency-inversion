@@ -1,0 +1,15 @@
+<div class="container">
+  <table>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+    </tr>
+    <tr *ngFor="let animal of animals | async">
+      <td>{{animal.id}}</td>
+      <td>{{animal.name}}</td>
+    </tr>
+  </table>
+  <div class="button-section">
+    <button (click)="getAnimals()">Refresh</button>
+  </div>
+</div>
