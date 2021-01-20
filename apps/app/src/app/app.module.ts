@@ -18,7 +18,7 @@ import { AnimalSearchComponent } from './components/animal-search/animal-search.
   providers: [
     {
       provide: AbstractAnimalService,
-      useClass: AnimalService
+      useClass: MockAnimalService
     },
     httpInterceptorProviders
   ],
