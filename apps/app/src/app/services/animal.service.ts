@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Animal } from '@how-to-mock-angular-service-with-dependency-inversion/api-interfaces';
 import { HttpClient } from '@angular/common/http';
 import { AbstractAnimalService } from './animal.abstract-service';
-import { NullAnimalImpl } from '../models/animal.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AnimalService extends AbstractAnimalService {
-  constructor(private http: HttpClient) {
-    super();
-  }
+export class AnimalService implements AbstractAnimalService {
+  constructor(private http: HttpClient) { }
 
   public getAnimals(): Observable<Animal[]> {
     return this.http.get<Animal[]>('api/animals');

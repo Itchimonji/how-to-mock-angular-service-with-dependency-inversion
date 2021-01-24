@@ -4,10 +4,9 @@ import { AnimalViewComponent } from './components/animal-view/animal-view.compon
 import { AnimalAddComponent } from './components/animal-add/animal-add.component';
 import { FormsModule } from '@angular/forms';
 import { AbstractAnimalService } from './services/animal.abstract-service';
-import { AnimalService } from './services/animal.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AnimalSearchComponent } from './components/animal-search/animal-search.component';
-import { combineAll } from 'rxjs/operators';
+import { MockAnimalService } from './services/mocks/animal-test.service';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -20,7 +19,7 @@ describe('AppComponent', () => {
       providers: [
         {
           provide: AbstractAnimalService,
-          useClass: AnimalService
+          useClass: MockAnimalService
         }]
     }).compileComponents();
   }));
