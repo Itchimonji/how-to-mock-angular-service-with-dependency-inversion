@@ -25,7 +25,7 @@ const test = [
   imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [
     httpInterceptorProviders,
-    // ...test <--- this can be used for a complete mock runtime modus
+    // ...test // <--- this can be used for a complete mock runtime modus
     ...production
   ],
   bootstrap: [AppComponent],
